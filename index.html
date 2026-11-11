@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Red Bull Racing — From Skeleton to Speed · Unofficial concept</title>
+  <meta name="description" content="An interactive 3D journey through Red Bull Racing's F1 story, 2005 to today — scroll to build the RB20 from wireframe to finished car. Unofficial design concept by Michael C." />
+  <meta name="theme-color" content="#121420" />
+  <link rel="icon" href="assets/brand/logo.png" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body class="is-loading">
+
+  <!-- ============ PRELOADER · LIGHTS OUT ============ -->
+  <div id="loader" role="status" aria-live="polite">
+    <div class="loader-inner">
+      <img class="loader-logo" src="assets/brand/logo.png" alt="Red Bull Racing" />
+      <div class="gantry" aria-hidden="true">
+        <span class="lamp"><i></i><i></i></span><span class="lamp"><i></i><i></i></span><span class="lamp"><i></i><i></i></span><span class="lamp"><i></i><i></i></span><span class="lamp"><i></i><i></i></span>
+      </div>
+      <div class="loader-meta"><span class="loader-pct"><b id="loadPct">000</b>%</span><span>Loading RB20 · lights out and away we go</span></div>
+    </div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><i></i><span></span></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#top" aria-label="Red Bull Racing — top"><img src="assets/brand/logo.png" alt="" /></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#journey" data-go="journey">Journey</a>
+      <a href="#legacy">Legacy</a>
+      <a href="#machine">Machine</a>
+      <a href="#drivers">Drivers</a>
+      <a href="#store">Store</a>
+    </nav>
+    <a class="nav-cta" href="#store"><span>Paddock Store</span><b id="bagCount" aria-label="Items in bag">0</b></a>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </header>
+  <div class="menu" id="menu" aria-hidden="true">
+    <a href="#journey">Journey</a><a href="#legacy">Legacy</a><a href="#machine">Machine</a><a href="#drivers">Drivers</a><a href="#store">Store</a>
+  </div>
+
+  <main id="top">
+
+  <!-- ============ HERO · THE JOURNEY ============ -->
+  <section id="journey" class="hero" aria-label="Red Bull Racing journey 2005 to today">
+    <div class="hero-pin">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <canvas id="gl" aria-hidden="true"></canvas>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <!-- intro title -->
+      <div class="intro" id="intro">
+        <p class="eyebrow"><i></i> Oracle Red Bull Racing · 2005 → Now</p>
+        <h1 class="intro-title"><span class="ln"><span>From</span></span><span class="ln"><span>Skeleton</span></span><span class="ln"><span class="hl">to Speed.</span></span></h1>
+        <p class="intro-sub">Scroll to build the RB20 — and 21 years of Formula 1 history.</p>
+        <div class="scroll-cue"><span class="mouse"><i></i></span><em>Scroll</em></div>
+      </div>
+
+      <!-- HUD -->
+      <div class="hud" id="hud">
+        <div class="year" id="year" aria-live="polite"><span class="year-label">Season</span>
+          <div class="odo" aria-hidden="true"></div>
+        </div>
+
+        <div class="telemetry" id="tele" aria-hidden="true">
+          <div class="tele-row"><span>Assembly</span><b id="teleAsm">00%</b></div>
+          <div class="tele-bar"><i id="teleBar"></i></div>
+          <div class="tele-row"><span>Parts online</span><b id="teleParts">0 / 10</b></div>
+          <div class="tele-row"><span>Stage</span><b id="teleStage">—</b></div>
+        </div>
+
+        <article class="card" id="card">
+          <div class="card-top"><span class="card-idx" id="cardIdx">01 / 11</span><span class="card-tag" id="cardTag">The Beginning</span></div>
+          <h2 class="card-title" id="cardTitle">A drinks company buys a grid slot.</h2>
+          <p class="card-body" id="cardBody"></p>
+          <ul class="card-stats" id="cardStats"></ul>
+        </article>
+
+        <nav class="rail" id="rail" aria-label="Timeline">
+          <div class="rail-line"><i id="railFill"></i></div>
+          <ol id="railList"></ol>
+        </nav>
+      </div>
+      <div class="hero-note" id="heroNote">3D model: RB20 (2024 car) · drag-free, scroll-driven</div>
+    </div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <section class="ticker" aria-hidden="true">
+    <div class="wipe"></div>
+    <div class="ticker-row" data-dir="-1"><div class="ticker-track"></div></div>
+    <div class="ticker-row ticker-row--outline" data-dir="1"><div class="ticker-track"></div></div>
+  </section>
+
+  <!-- ============ LEGACY ============ -->
+  <section id="legacy" class="legacy">
+    <div class="legacy-ghost" aria-hidden="true">WINGS</div>
+    <div class="wrap">
+      <div class="legacy-head">
+        <p class="eyebrow"><i></i> The legacy</p>
+        <h2 class="split-title">Twenty-one seasons.<br /><span class="hl">One bold idea.</span></h2>
+        <p class="lead">A drinks brand with no racing pedigree bought a struggling grid slot — and turned it into one of the most successful teams of the modern era.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="stat-n" data-count="2005" data-plain="1">0</span><span class="stat-l">Debut season</span><span class="stat-s">Bought Jaguar Racing, rebranded in Milton Keynes</span></div>
+        <div class="stat"><span class="stat-n" data-count="6">0</span><span class="stat-l">Constructors’ titles</span><span class="stat-s">2010–13, 2022, 2023</span></div>
+        <div class="stat"><span class="stat-n" data-count="8">0</span><span class="stat-l">Drivers’ titles</span><span class="stat-s">Vettel ×4 · Verstappen ×4</span></div>
+        <div class="stat"><span class="stat-n" data-count="19">0</span><span class="stat-l">Wins in 2023</span><span class="stat-s">From 22 races — one defeat, Singapore</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MACHINE · HORIZONTAL GALLERY ============ -->
+  <section id="machine" class="gal">
+    <div class="gal-pin">
+      <div class="gal-rail" id="galRail">
+      <div class="gal-head">
+        <p class="eyebrow"><i></i> The machine</p>
+        <h2>RB20 in<br /><span class="hl">the light.</span></h2>
+        <p class="lead">Six angles on the 2024 car. Scroll sideways through the studio.</p>
+      </div>
+      <div class="gal-track" id="galTrack">
+        <figure class="shot s-wide light"><div class="shot-frame"><img loading="lazy" src="assets/photos/front.webp" alt="RB20 head-on" /></div><figcaption><b>01</b> Head-on · aero</figcaption></figure>
+        <figure class="shot s-wide"><div class="shot-frame"><img loading="lazy" src="assets/photos/side-right.webp" alt="RB20 side profile in the garage" /></div><figcaption><b>02</b> Profile · garage</figcaption></figure>
+        <figure class="shot s-tall"><div class="shot-frame"><img loading="lazy" src="assets/photos/front-wing.webp" alt="RB20 front wing and tyre" /></div><figcaption><b>03</b> Front wing · Pirelli</figcaption></figure>
+        <figure class="shot s-wide"><div class="shot-frame"><img loading="lazy" src="assets/photos/top.webp" alt="RB20 from above" /></div><figcaption><b>04</b> Overhead · layout</figcaption></figure>
+        <figure class="shot s-wide light"><div class="shot-frame"><img loading="lazy" src="assets/photos/side-left.webp" alt="RB20 side profile on white" /></div><figcaption><b>05</b> Profile · studio</figcaption></figure>
+        <figure class="shot s-tall"><div class="shot-frame"><img loading="lazy" src="assets/photos/rear.webp" alt="RB20 rear" /></div><figcaption><b>06</b> Rear · diffuser</figcaption></figure>
+        <figure class="shot s-end"><div class="end-card"><span>Next</span><b>Meet the<br />drivers →</b></div></figure>
+      </div>
+      </div>
+      <div class="gal-prog"><i id="galProg"></i></div>
+    </div>
+  </section>
+
+  <!-- ============ DRIVERS ============ -->
+  <section id="drivers" class="drivers">
+    <div class="wrap">
+      <div class="drivers-head">
+        <p class="eyebrow"><i></i> 2026 line-up</p>
+        <h2 class="split-title">The two<br /><span class="hl">on the grid.</span></h2>
+      </div>
+      <div class="drv-grid">
+        <article class="drv" data-tilt>
+          <div class="drv-num" aria-hidden="true">3</div>
+          <img class="drv-photo" src="assets/drivers/verstappen.webp" alt="" onerror="this.remove()" />
+          <div class="drv-flag nl" aria-hidden="true"></div>
+          <div class="drv-info">
+            <span class="drv-tag">Oracle Red Bull Racing · #3</span>
+            <h3>Max<br /><b>Verstappen</b></h3>
+            <dl><div><dt>Nationality</dt><dd>Dutch</dd></div><div><dt>With the team</dt><dd>Since 2016</dd></div><div><dt>World titles</dt><dd>4× · 2021–2024</dd></div></dl>
+          </div>
+        </article>
+        <article class="drv drv--alt" data-tilt>
+          <div class="drv-num" aria-hidden="true">6</div>
+          <img class="drv-photo" src="assets/drivers/hadjar.webp" alt="" onerror="this.remove()" />
+          <div class="drv-flag fr" aria-hidden="true"></div>
+          <div class="drv-info">
+            <span class="drv-tag">Oracle Red Bull Racing · #6</span>
+            <h3>Isack<br /><b>Hadjar</b></h3>
+            <dl><div><dt>Nationality</dt><dd>French</dd></div><div><dt>F1 debut</dt><dd>2025 · Racing Bulls</dd></div><div><dt>Promoted</dt><dd>For the 2026 season</dd></div></dl>
+          </div>
+        </article>
+      </div>
+
+      <div class="legends">
+        <h3 class="legends-title">Hall of <span class="hl">Wings</span></h3>
+        <ul class="legend-list">
+          <li data-cursor="Legend"><span class="lg-yr">2005 — 08</span><span class="lg-name">David Coulthard</span><span class="lg-note">The first driver of the story</span></li>
+          <li data-cursor="Legend"><span class="lg-yr">2007 — 13</span><span class="lg-name">Mark Webber</span><span class="lg-note">The 2009 one-two, in the rain</span></li>
+          <li data-cursor="Legend"><span class="lg-yr">2009 — 14</span><span class="lg-name">Sebastian Vettel</span><span class="lg-note">Four titles, 2010 – 2013</span></li>
+          <li data-cursor="Legend"><span class="lg-yr">2014 — 18</span><span class="lg-name">Daniel Ricciardo</span><span class="lg-note">The smile through the hybrid era</span></li>
+          <li data-cursor="Legend"><span class="lg-yr">2021 — 24</span><span class="lg-name">Sergio Pérez</span><span class="lg-note">Teammate through the title years</span></li>
+          <li data-cursor="Legend"><span class="lg-yr">2016 — Now</span><span class="lg-name">Max Verstappen</span><span class="lg-note">Won on his team debut in Spain</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PADDOCK STORE · CLOTHING RAIL ============ -->
+  <section id="store" class="store">
+    <div class="store-head wrap">
+      <p class="eyebrow"><i></i> Paddock Store · Winter drop</p>
+      <h2 class="split-title">A paddock wardrobe you can<br /><span class="hl">rearrange, right on the page.</span></h2>
+      <p class="lead">Brush along the rail to light a piece, slide it, lift it to see the back.</p>
+      <a class="btn" href="#store" data-cursor="Shop"><span>Browse collection</span><i>→</i></a>
+    </div>
+    <div class="rack" id="rack" data-cursor="Drag">
+      <div class="rack-wall" aria-hidden="true"></div>
+      <div class="rack-spot" id="rackSpot" aria-hidden="true"></div>
+      <div class="rack-bar" aria-hidden="true"><i class="cap l"></i><i class="cap r"></i></div>
+      <div class="rack-track" id="rackTrack"></div>
+      <div class="rack-floor" aria-hidden="true"></div>
+      <p class="rack-hint"><span>←</span> Drag to slide <em>·</em> Tap a piece to lift it <span>→</span></p>
+    </div>
+    <div class="store-note wrap">Concept store — pieces and prices are illustrative, nothing here can be bought.</div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot" id="foot">
+    <div class="foot-big" aria-hidden="true"><span>Gives you</span><span class="hl">wings.</span></div>
+    <div class="wrap foot-grid">
+      <div class="foot-col"><img class="foot-logo" src="assets/brand/logo.png" alt="Red Bull Racing" /><p>An interactive journey through the Red Bull Racing story, 2005 – 2026.</p></div>
+      <div class="foot-col"><h4>Explore</h4><a href="#journey">Journey</a><a href="#legacy">Legacy</a><a href="#machine">Machine</a><a href="#drivers">Drivers</a><a href="#store">Store</a></div>
+      <div class="foot-col"><h4>Built with</h4><span>Three.js · GSAP · Lenis</span><span>Jost (Futura-style)</span><span>Model: RB20 (glTF)</span></div>
+    </div>
+    <div class="wrap foot-base">
+      <span class="credit">© Michael C</span>
+      <span class="disclaimer">Unofficial fan design concept. Not affiliated with, endorsed or sponsored by Red Bull GmbH, Oracle Red Bull Racing or Ford. All trademarks belong to their owners.</span>
+      <button class="to-top" id="toTop">Back to top ↑</button>
+    </div>
+  </footer>
+
+  <!-- ============ PRODUCT LIFT / FLIP ============ -->
+  <div class="lift" id="lift" aria-hidden="true">
+    <div class="lift-scrim"></div>
+    <div class="lift-card" id="liftCard">
+      <div class="lift-face lift-front"><img id="liftImg" alt="" /></div>
+      <div class="lift-face lift-back">
+        <p class="eyebrow"><i></i> <span id="liftLine"></span></p>
+        <h3 id="liftTitle"></h3>
+        <ul id="liftDetails"></ul>
+        <div class="lift-buy"><b id="liftPrice"></b><button class="btn btn--sm" id="liftAdd"><span>Add to bag</span><i>+</i></button></div>
+        <button class="lift-flip" id="liftFlip">Flip ⟲</button>
+      </div>
+      <button class="lift-close" id="liftClose" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
